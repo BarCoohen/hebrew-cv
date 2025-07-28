@@ -114,7 +114,7 @@ export default function EditorPage({ params }: EditorPageProps) {
     }
 
     // הוספת event listener ל-beforeunload לשמירה אחרונה
-    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+    const handleBeforeUnload = () => {
       saveOnUnmount()
       // לא מציגים הודעת אישור למשתמש כי זה מעצבן
     }
@@ -134,7 +134,7 @@ export default function EditorPage({ params }: EditorPageProps) {
       try {
         const resolvedParams = await params
         setCvId(resolvedParams.cvId)
-      } catch (err) {
+      } catch {
         setError('שגיאה בטעינת פרמטרים')
         setIsLoading(false)
       }

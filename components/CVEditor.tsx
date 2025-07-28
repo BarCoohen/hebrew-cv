@@ -602,7 +602,7 @@ export default function CVEditor({ cvData, onUpdate }: CVEditorProps) {
 
         {activeTab === 'skills' && (
           <div className="space-y-4">
-            {cvData.skills.map((skill, index) => (
+            {cvData.skills.map((skill) => (
               <div key={skill.id} className="flex items-center space-x-4 space-x-reverse border border-gray-200 rounded-lg p-3">
                 <div className="flex-1">
                   <input
@@ -616,7 +616,7 @@ export default function CVEditor({ cvData, onUpdate }: CVEditorProps) {
                 <div className="w-32">
                   <select
                     value={skill.level}
-                    onChange={(e) => updateSkill(skill.id, 'level', e.target.value as any)}
+                    onChange={(e) => updateSkill(skill.id, 'level', e.target.value as typeof skill.level)}
                     className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="מתחיל">מתחיל</option>
@@ -644,7 +644,7 @@ export default function CVEditor({ cvData, onUpdate }: CVEditorProps) {
 
         {activeTab === 'languages' && (
           <div className="space-y-4">
-            {cvData.languages.map((language, index) => (
+            {cvData.languages.map((language) => (
               <div key={language.id} className="flex items-center space-x-4 space-x-reverse border border-gray-200 rounded-lg p-3">
                 <div className="flex-1">
                   <input
@@ -658,7 +658,7 @@ export default function CVEditor({ cvData, onUpdate }: CVEditorProps) {
                 <div className="w-32">
                   <select
                     value={language.level}
-                    onChange={(e) => updateLanguage(language.id, 'level', e.target.value as any)}
+                    onChange={(e) => updateLanguage(language.id, 'level', e.target.value as typeof language.level)}
                     className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="בסיסי">בסיסי</option>

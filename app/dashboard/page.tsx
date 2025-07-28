@@ -161,7 +161,7 @@ export default function DashboardPage() {
                           } else {
                             alert('שגיאה ביצירת PDF');
                           }
-                        } catch (err) {
+                        } catch {
                           alert('שגיאה ביצירת PDF');
                         }
                       }}

@@ -1,4 +1,4 @@
-import { CVData, CVDatabase } from '@/types/cv';
+import { CVData } from '@/types/cv';
 
 // מבנה נתונים מורחב לרשומת CV
 export interface CVRecord {
