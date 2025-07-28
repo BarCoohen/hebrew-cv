@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# אפליקציית יצירת קורות חיים בעברית
 
-## Getting Started
+אפליקציה מתקדמת ליצירת קורות חיים מקצועיים בעברית עם תמיכה מלאה ב-RTL ויצירת קבצי PDF איכותיים.
 
-First, run the development server:
+## תכונות עיקריות
 
-```bash
+- **עיצוב מותאם לעברית**: תמיכה מלאה ב-RTL עם פונט Rubik
+- **ממשק משתמש נוח**: עורך אינטואיטיבי עם תצוגה מקדימה חיה
+- **יצירת PDF**: הורדת קורות חיים כקובץ PDF מקצועי באמצעות PDFShift
+- **תבניות מקצועיות**: תבנית ClassicTemplate מעוצבת במיוחד לשוק הישראלי
+- **אחסון זמני**: מסד נתונים בזיכרון לאחסון זמני של הנתונים
+
+## טכנולוגיות
+
+- **Framework**: Next.js 14+ עם App Router
+- **שפה**: TypeScript
+- **עיצוב**: Tailwind CSS
+- **יצירת PDF**: PDFShift API
+- **פונט**: Rubik מ-Google Fonts
+
+## התקנה והפעלה
+
+1. התקנת תלות:
+\`\`\`bash
+npm install
+\`\`\`
+
+2. הגדרת משתני סביבה (אופציונלי):
+\`\`\`bash
+# צרו קובץ .env.local והוסיפו:
+PDFSHIFT_API_KEY=your_pdfshift_api_key
+\`\`\`
+
+3. הפעלת שרת הפיתוח:
+\`\`\`bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. פתחו את הדפדפן בכתובת: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## מבנה הפרויקט
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+\`\`\`
+├── app/
+│   ├── page.tsx                 # עמוד הנחיתה
+│   ├── editor/page.tsx          # עמוד העורך
+│   ├── layout.tsx               # Layout עם הגדרות RTL
+│   ├── globals.css              # עיצוב גלובלי
+│   └── api/
+│       ├── save-cv/route.ts     # API לשמירת קורות חיים
+│       ├── get-cv/[cvId]/route.ts  # API לטעינת קורות חיים
+│       └── generate-pdf/route.ts   # API ליצירת PDF
+├── components/
+│   ├── CVEditor.tsx             # קומפוננטת העורך
+│   └── CVPreview.tsx            # תצוגה מקדימה
+├── templates/
+│   └── ClassicTemplate.tsx      # תבנית עיצוב קורות החיים
+├── lib/
+│   └── db.ts                    # מסד נתונים זמני
+├── types/
+│   └── cv.ts                    # הגדרות טיפוסים
+└── .github/
+    └── copilot-instructions.md  # הוראות לקופיילוט
+\`\`\`
 
-## Learn More
+## API Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+### POST /api/save-cv
+שמירת נתוני קורות חיים ויצירת מזהה ייחודי.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### GET /api/get-cv/[cvId]
+טעינת נתוני קורות חיים לפי מזהה.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### POST /api/generate-pdf
+יצירת קובץ PDF מנתוני קורות חיים קיימים.
 
-## Deploy on Vercel
+## הגדרת PDFShift (אופציונלי)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+ליצירת קבצי PDF איכותיים, יש צורך ב-API key של PDFShift:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. הירשמו ל-PDFShift: https://pdfshift.io
+2. קבלו API key
+3. הוסיפו למשתני הסביבה:
+\`\`\`
+PDFSHIFT_API_KEY=your_api_key_here
+\`\`\`
+
+**הערה**: ללא API key, המערכת תחזיר קובץ HTML במקום PDF.
+
+## פיתוח
+
+- הפרויקט משתמש ב-TypeScript עם strict mode
+- כל הקומפוננטות תומכות ב-RTL
+- השתמשו ב-Tailwind classes לעיצוב
+- הקפידו על תמיכה מלאה בעברית
+
+## רישיון
+
+MIT License
