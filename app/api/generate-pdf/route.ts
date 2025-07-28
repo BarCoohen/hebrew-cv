@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
     // 1. קבל את ה-HTML המוכן מהעמוד החדש שיצרנו
     console.log(`Fetching HTML from render page for CV ID: ${cvId}`);
-    const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
+    const baseUrl = process.env.NEXTAUTH_URL || 'https://hebrew-cv-elgb.vercel.app/';
     const renderUrl = `${baseUrl}/resume/render/${encodeURIComponent(cvId)}`;
     console.log(`🔗 Full render URL: ${renderUrl}`);
     
